@@ -9,6 +9,26 @@ def AND(x1, x2):
         return 0
     else:
         return 1
+    
+def NAND(x1, x2):  #AND게이트랑은 가중치, 편향만 다름
+    x = np.array([x1, x2])
+    w = np.array([-0.5, -0.5])
+    b = 0.7
+    tmp = np.sum(w*x) + b
+    if tmp <= 0:
+        return 0
+    else:
+        return 1
+
+def OR(x1, x2):  #AND게이트랑은 가중치, 편향만 다름
+    x = np.array([x1, x2])
+    w = np.array([0.5, 0.5])
+    b = -0.2
+    tmp = np.sum(w*x) + b
+    if tmp <= 0:
+        return 0
+    else:
+        return 1
 
 '''
 AND게이트: 두 입력이 1일 때만 1 출력
@@ -35,5 +55,17 @@ print(AND(x1, x2))
 for x1 in range(2):
     for x2 in range(2):
         print(AND(x1,x2))
+        x2 += 1
+    x1 += 1
+
+for x1 in range(2):
+    for x2 in range(2):
+        print(NAND(x1,x2))
+        x2 += 1
+    x1 += 1
+
+for x1 in range(2):
+    for x2 in range(2):
+        print(OR(x1,x2))
         x2 += 1
     x1 += 1
